@@ -1,0 +1,25 @@
+<h1>Listing Restaurants</h1>
+<% if @restaurants.present? %>
+	<table class="table">
+  	<thead>
+  		<tr>
+  			<th>Image</th>
+  			<th>Name</th>	
+  			<th>Link</th>
+  		</tr>
+  	</thead>
+  	<tbody>
+  		<% @restaurants.each do |res| %>
+  			<tr>
+          		<td><%= link_to (image_tag( res.photo_url, :size => "170x170")), review_path(res) %></td>
+  				<td><%= res.name %></td>
+  				<td><%= link_to 'Show Reviews', review_path(res) %></td>
+  			</tr>
+  		<% end %>
+
+  	</tbody>
+  </table>
+  <%= paginate @restaurants %>
+  <% else %>
+    <p>There are no restaurants with the search term(s) <%= params[:search] %>.</p>
+<% end %>

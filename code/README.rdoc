@@ -1,0 +1,3 @@
+== README
+
+Rails application for aggregated restaurant reviews
